@@ -1,0 +1,27 @@
+---
+title: "Markdown buttons"
+author: "Agasiya"
+date: "10/14/2021"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(DT)
+library(dplyr)
+library(readr)
+library(readxl)
+payroll <- read_excel("questionnaire.xlsx") %>% 
+  select(gender, age, income, edu)
+datatable(payroll, extensions = 'Buttons', options = list(
+    dom = 'Bfrtip',
+    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+  )
+)
+```
